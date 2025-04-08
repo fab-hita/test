@@ -1,18 +1,57 @@
-import { Conversation } from './components/conversation';
+import { auth, signIn, signOut } from "@/auth"
+import { Conversation } from './components/conversation'
+import Image from 'next/image'
+import linkedInPic from './images/linkedin.png'
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm">
-        <h1 className="text-4xl font-bold mb-8 text-center">
-          ElevenLabs Conversational AI
-        </h1>
-        <Conversation />
-      </div>
-    </main>
-  );
+export const metadata = {
+  title: "hita - Chat with Sales Manager"
 }
 
+export default async function SignIn() {
+  const session = await auth()
+  // console.log(session)
+  const user = session?.user
+
+  return user ? 
+  (
+    <>
+      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+        <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm">
+          <h1 className="text-4xl font-bold mb-8 text-center"> Welcome {user.name}</h1>
+          <h1 className="text-2xl font-bold mb-8 text-center">
+            Chat with Maria
+          </h1>
+          <Conversation />
+        </div>
+        <form
+        action={async () => {
+          "use server"
+          await signOut()
+        }}
+        >
+          <button type="submit">Sign Out</button>
+        </form>
+      </main>
+    </>
+  )
+  :
+  (
+    <>
+      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+        <h1 className="text-4xl font-bold mb-8 text-center">Warm Welcome
+          <form
+            action={async () => {
+              "use server"
+              await signIn("linkedin")
+            }}
+          >
+            <button type="submit"><Image src={linkedInPic} alt="" /></button>
+          </form>
+        </h1>
+      </main>
+    </>
+  )
+  }
 
 // import Image from "next/image";
 
