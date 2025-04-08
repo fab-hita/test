@@ -23,13 +23,13 @@ env:
       - BUILD
       - RUNTIME
 
-  - variable: LINKEDIN_CLIENT_ID
+  - variable: AUTH_LINKEDIN_ID
     value: 777nt7eq7sg4ef
     availability:
       - BUILD
       - RUNTIME
 
-  - variable: LINKEDIN_CLIENT_SECRET
+  - variable: AUTH_LINKEDIN_SECRET
     value: WPL_AP1.ipI2Ze5LfcKOJ7i5.dytY7w==
     availability:
       - BUILD
