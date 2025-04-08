@@ -16,6 +16,12 @@ env:
     availability:
       - BUILD
       - RUNTIME
+      
+  - variable: AUTH_TRUST_HOST
+    value: TRUE
+    availability:
+      - BUILD
+      - RUNTIME
 
   - variable: LINKEDIN_CLIENT_ID
     value: 777nt7eq7sg4ef
