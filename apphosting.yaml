@@ -18,7 +18,7 @@ env:
       - RUNTIME
       
   - variable: AUTH_TRUST_HOST
-    value: TRUE
+    value: https://chat.hita.one
     availability:
       - BUILD
       - RUNTIME
