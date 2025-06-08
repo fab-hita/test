@@ -38,7 +38,8 @@ export default async function SignIn() {
   (
     <>
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <h1 className="text-4xl font-bold mb-8 text-center">Warm Welcome
+        <h1 className="text-2xl font-bold mb-8 text-center">Please log in
+          <br /><br />
           <form
             action={async () => {
               "use server"
